@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    nginx:
+      image: nginx:latest
+      ports:
+      - target: 80
+        published: 80
+      volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    client    
+      image: localhost:5000/myclient:latest
+      build:
+        context: ./static_website
+    mongo:
+      image: mongo:latest
