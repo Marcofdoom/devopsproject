@@ -49,9 +49,11 @@ services:
       build:
         context: ./prizegen/highprize/
       ports:
-      - target: 9020
-        published: 9020
+      - target: 5002
+        published: 5002
         protocol: tcp
+      depends_on:
+      - notificationserver
     db_connector:
       image: localhost:5000/db_connector_image
       build:
@@ -62,4 +64,7 @@ services:
       - target: 5001
         published: 5001
         protocol: tcp
-    
+    notificationserver:
+      image: localhost:5000/notificationserver_image
+      build:
+        context: ./notification_server/  
