@@ -9,9 +9,16 @@ services:
       - type: bind
         source: ./nginx.conf
         target: /etc/nginx/nginx.conf
-    client    
-      image: localhost:5000/myclient:latest
+      depends_on:
+      - client
+      - server
+    client:    
+      image: localhost:5000/static_website_image:latest
       build:
         context: ./static_website
+    server:
+      image: localhost:5000/server_image:latest
+      build:
+        context: ./server
     mongo:
       image: mongo:latest
