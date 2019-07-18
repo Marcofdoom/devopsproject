@@ -5,6 +5,7 @@ services:
       ports:
       - target: 80
         published: 80
+        protocol: tcp
       volumes:
       - type: bind
         source: ./nginx.conf
@@ -12,6 +13,12 @@ services:
       depends_on:
       - client
       - server
+      - mongo
+      - numgen
+      - texgen
+      - prizegen
+      - db_connector
+      - notificationserver
     client:    
       image: localhost:5000/static_website_image:latest
       build:
@@ -67,4 +74,4 @@ services:
     notificationserver:
       image: localhost:5000/notificationserver_image
       build:
-        context: ./notification_server/  
+        context: ./notification_server/

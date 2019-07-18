@@ -5,13 +5,13 @@ services:
       ports:
       - target: 80
         published: 80
-        protocol: tcp
       volumes:
       - type: bind
-        source: ./nginx/nginx.conf
+        source: ./nginx.conf
         target: /etc/nginx/nginx.conf
       depends_on:
       - client
+      - server
     client:    
       image: localhost:5000/static_website_image:latest
       build:
@@ -67,7 +67,4 @@ services:
     notificationserver:
       image: localhost:5000/notificationserver_image
       build:
-        context: ./notification_server/
-configs:
-  my_nginx:
-    file: ../nginx.conf
+        context: ./notification_server/  
