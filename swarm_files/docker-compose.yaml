@@ -1,0 +1,73 @@
+version: '3.7'
+services:
+    nginx:
+      image: nginx:latest
+      ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+      volumes:
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+      depends_on:
+      - client
+    client:    
+      image: localhost:5000/static_website_image:latest
+      build:
+        context: ./static_website
+    server:
+      image: localhost:5000/server_image:latest
+      build:
+        context: ./server
+      ports:
+      - "8084:8084"
+      depends_on:
+      - mongo
+      - db_connector
+      - prizegen
+    mongo:
+      image: mongo:latest
+    numgen:
+      image: localhost:5000/numgen:6fig
+      build:
+        context: ./numgen/6fig/
+      ports:      
+      - target: 9019
+        published: 9019
+        protocol: tcp
+    texgen:
+      image: localhost:5000/texgen:2char
+      build:
+        context: ./texgen/2char/
+      ports:
+      - target: 9018
+        published: 9018
+        protocol: tcp
+    prizegen:
+      image: localhost:5000/prize:highprize
+      build:
+        context: ./prizegen/highprize/
+      ports:
+      - target: 5002
+        published: 5002
+        protocol: tcp
+      depends_on:
+      - notificationserver
+    db_connector:
+      image: localhost:5000/db_connector_image
+      build:
+        context: ./db_connector/
+      depends_on: 
+      - mongo
+      ports:
+      - target: 5001
+        published: 5001
+        protocol: tcp
+    notificationserver:
+      image: localhost:5000/notificationserver_image
+      build:
+        context: ./notification_server/
+configs:
+  my_nginx:
+    file: ../nginx.conf
