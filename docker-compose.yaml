@@ -22,3 +22,18 @@ services:
         context: ./server
     mongo:
       image: mongo:latest
+      ports:
+      - "27017:27017"
+    numgen:
+      image: localhost:5000/numgen:6fig
+    texgen:
+      image: localhost:5000/texgen:2char
+    prizegen:
+      image: localhost:5000/prize:highprize
+    db_connector:
+      image: localhost:5000/db_connector_image
+      depends_on: 
+      - mongo
+      ports:
+      - "5001:5001"
+    

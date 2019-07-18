@@ -12,6 +12,7 @@ def num_gen_minmax():
     rand = randint(1, 10)
     if rand > 3:
     	return jsonify('won')
+#	requests.get('localhost:9000/notify')
     else:
     	return jsonify('lost')
 
