@@ -20,20 +20,46 @@ services:
       image: localhost:5000/server_image:latest
       build:
         context: ./server
+      ports:
+      - "8084:8084"
+      depends_on:
+      - mongo
+      - db_connector
+      - prizegen
     mongo:
       image: mongo:latest
-      ports:
-      - "27017:27017"
     numgen:
       image: localhost:5000/numgen:6fig
+      build:
+        context: ./numgen/6fig/
+      ports:      
+      - target: 9019
+        published: 9019
+        protocol: tcp
     texgen:
       image: localhost:5000/texgen:2char
+      build:
+        context: ./texgen/2char/
+      ports:
+      - target: 9018
+        published: 9018
+        protocol: tcp
     prizegen:
       image: localhost:5000/prize:highprize
+      build:
+        context: ./prizegen/highprize/
+      ports:
+      - target: 9020
+        published: 9020
+        protocol: tcp
     db_connector:
       image: localhost:5000/db_connector_image
+      build:
+        context: ./db_connector/
       depends_on: 
       - mongo
       ports:
-      - "5001:5001"
+      - target: 5001
+        published: 5001
+        protocol: tcp
     

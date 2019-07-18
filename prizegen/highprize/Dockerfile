@@ -1,6 +1,13 @@
-FROM python
+
+FROM node:10
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
-RUN pip install flask
-RUN pip install requests
-EXPOSE 9017
-ENTRYPOINT ["python", "app.py"]
+
+EXPOSE 5002
+ENTRYPOINT [ "node", "server.js" ]
