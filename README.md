@@ -49,6 +49,7 @@ If you enter the machines ip address into your web browzer, the image below shou
 ![landingpage](https://user-images.githubusercontent.com/46506164/61532704-8c3e1680-aa22-11e9-9325-25b96de3b0f8.png)
 
 Enter a first name and last name and then click "create account". if all goes well, you should see this log within the console (Push F12 in your web browzer).
+
 ![testname](https://user-images.githubusercontent.com/46506164/61533115-c825ab80-aa23-11e9-8723-0e9023747f8f.png)
 
 ![creation](https://user-images.githubusercontent.com/46506164/61533158-e390b680-aa23-11e9-980c-325099bff651.png)
