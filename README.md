@@ -46,3 +46,4 @@ This will then spin up all services for this project. You can check if all the s
 docker service list
 ```
 If you now navigate to the URL and enter the ip address of your machine, you should be able to see this web page.
+![webpage](https://user-images.githubusercontent.com/46506164/61532631-500ab600-aa22-11e9-9f40-ef44eecc09e2.png)
