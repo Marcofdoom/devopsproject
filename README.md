@@ -28,4 +28,5 @@ cd ../texgen/3char/
 docker build -t localhost:5000/texgen:3char .
 
 cd ../prize/lowprize/
-docker build -t localhost:5000/prize:lowprize .
+docker build -t localhost:5000/prizegen:lowprize .
+```
