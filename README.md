@@ -84,6 +84,7 @@ After the update, adding any additional accounts will now use these new microser
 
 ## The Architecture
 
+![architecture](https://user-images.githubusercontent.com/46506164/61539333-3887f900-aa33-11e9-8760-7e8282aa8489.png)
 
 
 
