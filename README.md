@@ -41,5 +41,8 @@ Navigate back to the LAFB directory and enter this command.
 ```
 docker stack deploy --compose-file docker-compose.yaml stackdemo
 ```
-
+This will then spin up all services for this project. You can check if all the services have run successfully by using the command below.
+```
+docker service list
+```
 
