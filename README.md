@@ -1,6 +1,6 @@
 # devopsproject
 
-Setting up the project
+## Setting up and running the devopsproject
 
 first clone down the git hub project.
 
