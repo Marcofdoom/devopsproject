@@ -78,6 +78,8 @@ docker service update --image localhost:5000/texgen:2char stackdemo_texgen
 docker service update --image localhost:5000/prize:lowprize stackdemo_prizegen
 ```
 
+After the update, adding any additional accounts will now use these new microservices. notice below that the new account number consists of just 2 letters and 6 numbers!
+
 ![accountnumber1](https://user-images.githubusercontent.com/46506164/61534210-e17c2700-aa26-11e9-866f-ddab75f067fb.png)
 
 
