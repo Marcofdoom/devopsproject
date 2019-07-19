@@ -146,7 +146,7 @@ This function exposes the end point /numgen in order for the server to access th
 @app.route('/numgen', methods=['GET'])
 ...
 ```
-The test function exposes the end point /test for testing purpoes only.
+The test function exposes the end point /test for testing purposes only.
 ```
 @app.route('/test', methods=['GET'])
 ...
@@ -163,7 +163,7 @@ This function exposes the end point /texgen in order for the server to access th
 @app.route('/texgen', methods=['GET'])
 ...
 ```
-The test function exposes the end point /test for testing purpoes only.
+The test function exposes the end point /test for testing purposes only.
 ```
 @app.route('/test', methods=['GET'])
 ...
@@ -193,7 +193,7 @@ router.post("/createAccount", (req, res) => {
 ...
 });
 ```
-The test function exposes the end point /test for testing purpoes only.
+The test function exposes the end point /test for testing purposes only.
 ```
 router.get("/test", (req, res) => {
 ...
@@ -206,6 +206,9 @@ module.exports = {
   };
 ```
 #### account.js
+The account.js file in the db_connector communicates with the Mongo database using the two endpoints below.
+- The GET end point /all will return all accounts from the mongo database.
+- The POST end point /createAccount will create an account and add it into the mongo database.
 ```
 // @route   GET account/all
 // @desc    Get all accounts
