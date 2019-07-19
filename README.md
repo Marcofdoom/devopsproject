@@ -30,3 +30,12 @@ docker build -t localhost:5000/texgen:3char .
 cd ../prize/lowprize/
 docker build -t localhost:5000/prizegen:lowprize .
 ```
+We then have to push these images to the registry.
+```
+docker-compose push
+docker push localhost:5000/numgen:8fig
+docker push localhost:5000/texgen:3char
+docker push localhost:5000/prizegen:lowprize
+```
+
+
