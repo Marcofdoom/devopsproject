@@ -158,33 +158,32 @@ if __name__ == '__main__':
 ```
 ### Texgen
 #### app.py
-```
-@app.route('/test', methods=['GET'])
-...
-```
+This function exposes the end point /texgen in order for the server to access this container.
 ```
 @app.route('/texgen', methods=['GET'])
 ...
 ```
+The test function exposes the end point /test for testing purpoes only.
 ```
-@app.route('/anEndpoint')
+@app.route('/test', methods=['GET'])
 ...
 ```
+The application sets its port to 9018 in order for the server to communicate with it.
 ```
 if __name__ == '__main__':
      app.run(host='0.0.0.0', port=9018)
 ```
 ### Prizegen
 #### account.js
-```
-router.get("/test", (req, res) => {
-...
-```
+This function exposes the /all end point. When called it will send an HTTP GET request to the db_connector which is on port 5001.
 ```
 router.get("/all", (req, res) => {
   axios.get('http://db_connector:5001/account/all')
 ...
 ```
+This function exposes the /createAccount end point. When called it will:
+- Send an HTTP GET request to the db_connector on port 5001.
+- Send an HTTP POST request to the notification_server on port 9000.
 ```
 router.post("/createAccount", (req, res) => {
 ...
@@ -193,6 +192,11 @@ router.post("/createAccount", (req, res) => {
     axios.post('http://db_connector:5001/account/createAccount', newAccount)
 ...
 });
+```
+The test function exposes the end point /test for testing purpoes only.
+```
+router.get("/test", (req, res) => {
+...
 ```
 ### DB Connector
 #### keys.js
