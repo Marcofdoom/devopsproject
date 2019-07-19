@@ -37,5 +37,9 @@ docker push localhost:5000/numgen:8fig
 docker push localhost:5000/texgen:3char
 docker push localhost:5000/prizegen:lowprize
 ```
+Navigate back to the LAFB directory and enter this command.
+```
+docker stack deploy --compose-file docker-compose.yaml stackdemo
+```
 
 
