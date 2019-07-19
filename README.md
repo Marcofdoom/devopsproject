@@ -109,6 +109,18 @@ module.exports = {
   };
 ```
 
+application.properties
+```
+spring.main.allow-bean-definition-overriding=true
+
+server.port=8084
+
+url.getAll=http://prizegen:5002/account/all
+url.textGen=http://texgen:9018/texgen
+url.numGen=http://numgen:9019/numgen
+url.prize=http://prizegen:5002/account/createAccount
+```
+
 
 
 
