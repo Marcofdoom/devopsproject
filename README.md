@@ -57,19 +57,23 @@ Pushing the "Get All Accounts" button should display this in the console.
 ![array](https://user-images.githubusercontent.com/46506164/61533131-d4aa0400-aa23-11e9-85a8-351a77cc9c23.png)
 
 ## Changing images (Services)
-One of the great things about dockerizing our microservices is that it is very easy to change out different implementations of our project.
+One of the great things about dockerizing our application is that it is very easy to change out different parts of it.
 
 For example, in this project, we have a text generator, number generator and prize generator. While setting up our project above we created two different images for each of these microservices. Notice in the image below the account number is "sev96992625".
 
 ![array](https://user-images.githubusercontent.com/46506164/61533131-d4aa0400-aa23-11e9-85a8-351a77cc9c23.png)
 
-We are currently using the localhost:5000/numgen:3char and the localhost:5000/texgen:8fig images for our texgen and numgen services respectively.
+We are currently using the images:
+- localhost:5000/numgen:3char for our text generator.
+- localhost:5000/texgen:8fig  for our number generator.
+- localhost:5000/prize:highprize for our prize generator.
 
-if we wanted to change out these implementations to our other versions, the 2char and the 6fig images, we can use the commands below and it will swap out these services live!
+if we wanted to change out these implementations to our other versions, we can use the commands below and it will swap out these services live!
 
 ```
 docker service update --image localhost:5000/numgen:6fig stackdemo_numgen
 docker service update --image localhost:5000/texgen:2char stackdemo_texgen
+docker service update --image localhost:5000/prize:lowprize stackdemo_prizegen
 ```
 
 
