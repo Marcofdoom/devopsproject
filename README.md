@@ -59,7 +59,9 @@ Pushing the "Get All Accounts" button should display this in the console.
 ## Changing images (Services)
 One of the great things about dockerizing our application is that it is very easy to change out different parts of it.
 
-For example, in this project, we have a text generator, number generator and prize generator. While setting up our project above we created two different images for each of these microservices. Notice in the image below the account number is "sev96992625".
+The account number is created via two different services, by concatinating the output from the text generator service and number generator service.
+
+While setting up our project above we created two different images for each of these microservices. Notice in the image below the account number is "sev96992625".
 
 ![array](https://user-images.githubusercontent.com/46506164/61533131-d4aa0400-aa23-11e9-85a8-351a77cc9c23.png)
 
