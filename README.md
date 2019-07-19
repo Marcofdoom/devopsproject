@@ -134,6 +134,14 @@ app.use(express.static('public'))
 
 app.listen(8089);
 ```
+#### script.js
+```
+...
+'GET', 'http://51.140.121.39:8084/getAllAccounts'
+...
+'POST', 'http://51.140.121.39:8084/addAccount'
+...
+```
 
 
 
