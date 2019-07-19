@@ -110,12 +110,28 @@ module.exports = {
     mongoURI: "mongodb://mongo:27017/accounts"
   };
 ```
+#### account.js
+```
+// @route   GET account/all
+// @desc    Get all accounts
+// @access  Public
+router.get("/all", (req, res) => {
+...
+});
+```
+```
+// @route   POST Account/createAccount
+// @desc    Create an Account
+// @access  Public
+router.post("/createAccount", (req, res) => {
+...
+});
+```
 
 ### Server
 #### application.properties
 ```
 ...
-
 server.port=8084
 
 url.getAll=http://prizegen:5002/account/all
@@ -142,7 +158,62 @@ app.listen(8089);
 'POST', 'http://51.140.121.39:8084/addAccount'
 ...
 ```
-
+### Numgen
+#### app.py
+```
+@app.route('/test', methods=['GET'])
+...
+```
+```
+@app.route('/numgen', methods=['GET'])
+...
+```
+```
+@app.route('/anEndpoint')
+...
+```
+```
+if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=9019)
+```
+### Texgen
+#### app.py
+```
+@app.route('/test', methods=['GET'])
+...
+```
+```
+@app.route('/texgen', methods=['GET'])
+...
+```
+```
+@app.route('/anEndpoint')
+...
+```
+```
+if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=9018)
+```
+### Prizegen
+#### account.js
+```
+router.get("/test", (req, res) => {
+...
+```
+```
+router.get("/all", (req, res) => {
+  axios.get('http://db_connector:5001/account/all')
+...
+```
+```
+router.post("/createAccount", (req, res) => {
+...
+    axios.get('http://notificationserver:9000/notify').catch(error => {
+...
+    axios.post('http://db_connector:5001/account/createAccount', newAccount)
+...
+});
+```
 
 
 
