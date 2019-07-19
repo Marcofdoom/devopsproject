@@ -86,7 +86,7 @@ After the update, adding any additional accounts will now use these new microser
 
 ![architecture](https://user-images.githubusercontent.com/46506164/61539333-3887f900-aa33-11e9-8760-7e8282aa8489.png)
 
-### nginx
+### Nginx
 #### nginx.conf
 ```
 events {}
@@ -103,7 +103,7 @@ http {
 }
 ```
 
-### db_connector
+### DB Connector
 #### keys.js
 ```
 module.exports = {
@@ -124,7 +124,7 @@ url.numGen=http://numgen:9019/numgen
 url.prize=http://prizegen:5002/account/createAccount
 ```
 
-### static_website
+### Static Website
 #### server.js
 ```
 var express = require('express');
