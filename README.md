@@ -45,4 +45,4 @@ This will then spin up all services for this project. You can check if all the s
 ```
 docker service list
 ```
-
+If you now navigate to the URL and enter the ip address of your machine, you should be able to see this web page.
