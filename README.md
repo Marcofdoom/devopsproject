@@ -114,7 +114,7 @@ module.exports = {
 ### Server
 #### application.properties
 ```
-spring.main.allow-bean-definition-overriding=true
+...
 
 server.port=8084
 
