@@ -65,6 +65,14 @@ For example, in this project, we have a text generator, number generator and pri
 
 We are currently using the localhost:5000/numgen:3char and the localhost:5000/texgen:8fig images for our texgen and numgen services respectively.
 
+if we wanted to change out these implementations to our other versions, the 2char and the 6fig images, we can use the commands below and it will swap out these services live!
+
+```
+docker service update --image localhost:5000/numgen:8fig stackdemo_numgen
+docker service update --image localhost:5000/texgen:3char stackdemo_texgen
+```
+
+
 
 
 
