@@ -86,6 +86,22 @@ After the update, adding any additional accounts will now use these new microser
 
 ![architecture](https://user-images.githubusercontent.com/46506164/61539333-3887f900-aa33-11e9-8760-7e8282aa8489.png)
 
+nginx.conf
+```
+events {}
+http {
+	server {
+		listen 80;
+		location / {
+			proxy_pass http://client:8089/;
+		}
+                location /server/ {
+                        proxy_pass http://server:8084/;
+                }
+	}
+}
+```
+
 
 
 
