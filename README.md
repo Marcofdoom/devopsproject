@@ -63,7 +63,7 @@ The account number is created via two different services, by concatinating the o
 
 While setting up our project above we created two different images for each of these microservices. Notice in the image below the account number is "sev96992625".
 
-![array](https://user-images.githubusercontent.com/46506164/61533131-d4aa0400-aa23-11e9-85a8-351a77cc9c23.png)
+![accountnumber2](https://user-images.githubusercontent.com/46506164/61534215-e5a84480-aa26-11e9-977b-dc18463814ea.png)
 
 We are currently using the images:
 - localhost:5000/numgen:3char for our text generator.
@@ -80,7 +80,7 @@ docker service update --image localhost:5000/prize:lowprize stackdemo_prizegen
 
 ![accountnumber1](https://user-images.githubusercontent.com/46506164/61534210-e17c2700-aa26-11e9-866f-ddab75f067fb.png)
 
-![accountnumber2](https://user-images.githubusercontent.com/46506164/61534215-e5a84480-aa26-11e9-977b-dc18463814ea.png)
+
 
 
 
