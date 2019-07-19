@@ -50,9 +50,9 @@ If you enter the machines ip address into your web browzer, the image below shou
 
 Enter a first name and last name and then click "create account". if all goes well, you should see this log within the console (Push F12 in your web browzer).
 
-![testname](https://user-images.githubusercontent.com/46506164/61533115-c825ab80-aa23-11e9-8723-0e9023747f8f.png)
-
 ![creation](https://user-images.githubusercontent.com/46506164/61533158-e390b680-aa23-11e9-980c-325099bff651.png)
+
+Pushing the "Get All Accounts" button should display this in the console.
 
 ![array](https://user-images.githubusercontent.com/46506164/61533131-d4aa0400-aa23-11e9-85a8-351a77cc9c23.png)
 
