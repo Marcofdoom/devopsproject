@@ -1,5 +1,5 @@
 function getall() {
-    console.log("hey");
+    console.log("getAll");
 
     let req = new XMLHttpRequest();
     req.onload = function () {

@@ -38,7 +38,7 @@ router.post("/createAccount", (req, res) => {
   let prize;
 
   if (prizeDecider >= 25){
-    prize = "£50";
+    prize = "£75";
 
     axios.get('http://notificationserver:9000/notify').catch(error => {
       console.log(error);
