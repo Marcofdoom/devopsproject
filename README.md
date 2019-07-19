@@ -102,6 +102,13 @@ http {
 }
 ```
 
+db_connector
+```
+module.exports = {
+    mongoURI: "mongodb://mongo:27017/accounts"
+  };
+```
+
 
 
 
