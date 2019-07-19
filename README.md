@@ -104,7 +104,7 @@ http {
 ```
 
 ### db_connector
-#### db_connector
+#### keys.js
 ```
 module.exports = {
     mongoURI: "mongodb://mongo:27017/accounts"
