@@ -127,7 +127,9 @@ The static website has two http requests. A Get request which sends a request to
 ```
 ### Server
 #### application.properties
-The application.properties file details the port of the server.
+The application.properties file details the port of the server as well as defining urls that are used in the business logic layer in the spring boot application (AccountService.java).
+
+From here, the server can communicate to each of the three microservices using the end points that they expose which are mentioned under the Numgen, Texgen and Prizegen sections below.
 ```
 ...
 server.port=8084
@@ -137,45 +139,19 @@ url.textGen=http://texgen:9018/texgen
 url.numGen=http://numgen:9019/numgen
 url.prize=http://prizegen:5002/account/createAccount
 ```
-### DB Connector
-#### keys.js
-```
-module.exports = {
-    mongoURI: "mongodb://mongo:27017/accounts"
-  };
-```
-#### account.js
-```
-// @route   GET account/all
-// @desc    Get all accounts
-// @access  Public
-router.get("/all", (req, res) => {
-...
-});
-```
-```
-// @route   POST Account/createAccount
-// @desc    Create an Account
-// @access  Public
-router.post("/createAccount", (req, res) => {
-...
-});
-```
-
 ### Numgen
 #### app.py
-```
-@app.route('/test', methods=['GET'])
-...
-```
+This function exposes the end point /numgen in order for the server to access this container.
 ```
 @app.route('/numgen', methods=['GET'])
 ...
 ```
+The test function exposes the end point /test for testing purpoes only.
 ```
-@app.route('/anEndpoint')
+@app.route('/test', methods=['GET'])
 ...
 ```
+The application sets its port to 9019 in order for the server to communicate with it.
 ```
 if __name__ == '__main__':
      app.run(host='0.0.0.0', port=9019)
@@ -218,12 +194,27 @@ router.post("/createAccount", (req, res) => {
 ...
 });
 ```
-
-
-
-
-
-
-
-
-
+### DB Connector
+#### keys.js
+```
+module.exports = {
+    mongoURI: "mongodb://mongo:27017/accounts"
+  };
+```
+#### account.js
+```
+// @route   GET account/all
+// @desc    Get all accounts
+// @access  Public
+router.get("/all", (req, res) => {
+...
+});
+```
+```
+// @route   POST Account/createAccount
+// @desc    Create an Account
+// @access  Public
+router.post("/createAccount", (req, res) => {
+...
+});
+```
