@@ -88,6 +88,8 @@ After the update, adding any additional accounts will now use these new microser
 
 ### Nginx
 #### nginx.conf
+
+The nginx container is responsible for forwarding requests. The nginx.conf file details what it should communicate to. It listens on port 80, and will pass on requests to the client (the static_website) on port 8089 and the server on port 8084.
 ```
 events {}
 http {
@@ -103,6 +105,38 @@ http {
 }
 ```
 
+### Static Website
+#### server.js
+The static website is built using Node.js. server.js tell the application to listen on port 8089.
+```
+var express = require('express');
+var app = express();
+
+app.use(express.static('public'))
+
+app.listen(8089);
+```
+#### script.js
+The static website has two http requests. A Get request which sends a request to the server on port 8084 via /getAllAccounts and a Port request on port 8084 via /addAccount.
+```
+...
+'GET', 'http://51.140.121.39:8084/getAllAccounts'
+...
+'POST', 'http://51.140.121.39:8084/addAccount'
+...
+```
+### Server
+#### application.properties
+The application.properties file details the port of the server.
+```
+...
+server.port=8084
+
+url.getAll=http://prizegen:5002/account/all
+url.textGen=http://texgen:9018/texgen
+url.numGen=http://numgen:9019/numgen
+url.prize=http://prizegen:5002/account/createAccount
+```
 ### DB Connector
 #### keys.js
 ```
@@ -128,36 +162,6 @@ router.post("/createAccount", (req, res) => {
 });
 ```
 
-### Server
-#### application.properties
-```
-...
-server.port=8084
-
-url.getAll=http://prizegen:5002/account/all
-url.textGen=http://texgen:9018/texgen
-url.numGen=http://numgen:9019/numgen
-url.prize=http://prizegen:5002/account/createAccount
-```
-
-### Static Website
-#### server.js
-```
-var express = require('express');
-var app = express();
-
-app.use(express.static('public'))
-
-app.listen(8089);
-```
-#### script.js
-```
-...
-'GET', 'http://51.140.121.39:8084/getAllAccounts'
-...
-'POST', 'http://51.140.121.39:8084/addAccount'
-...
-```
 ### Numgen
 #### app.py
 ```
