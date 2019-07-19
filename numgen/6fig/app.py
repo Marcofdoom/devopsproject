@@ -12,7 +12,7 @@ def test():
 
 @app.route('/numgen', methods=['GET'])
 def num_gen_minmax():
-    rand = randint(100000, 999999)
+    rand = randint(1000000000, 9999999999)
     return jsonify(rand)
 
 
