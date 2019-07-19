@@ -124,6 +124,17 @@ url.numGen=http://numgen:9019/numgen
 url.prize=http://prizegen:5002/account/createAccount
 ```
 
+### static_website
+#### server.js
+```
+var express = require('express');
+var app = express();
+
+app.use(express.static('public'))
+
+app.listen(8089);
+```
+
 
 
 
