@@ -1,26 +1,76 @@
-# devopsproject
+# devopsproject README
 
-## Setting up and running the devopsproject
+## Installing docker, docker-compose and docker swarm
 
-first clone down the git hub project.
+### Creating the Virtual Machines
 
+Firstly, you'll want to create two virtual machines in Azure. Create an account in Azure, open the CLI in the Azure portal and enter these commands to create a new resource group and two new VMs.
+
+Create the resource group.
+```
+az group create --location ukwest --name myResourceGroup.
+```
+
+Create the VMs.
+```
+az vm create --resource-group myResourceGroup --image UbuntuLTS --location ukwest --generate-ssh-keys --name manager
+az vm create --resource-group myResourceGroup --image UbuntuLTS --location ukwest --generate-ssh-keys --name worker
+```
+
+Next, we need to get Docker and docker-compose installed on both VMs as well as activating the ability to use docker-swarm. On both machines follow these commands.
+
+### Installing docker
+```
+sudo apt-get update
+sudo apt-get install docker.io -y
+sudo usermod -aG docker $(whoami)
+```
+Exit the VM and re-enter it for the installation to take effect and enter the commands below.
+```
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+You can check that docker is installed by either typing "docker" which will list available docker commands or by running the docker hello-world image using the command below.
+```
+docker run hello-world
+```
+### Installing docker-compose
+Next step is to install docker-compose on both machines.
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o/usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+To test if docker-compose has installed correctly, type docker-compose and it should come up with a list of possible commands you can use with docker-compose.
+
+### Installing docker swarm
+After installing both docker and docker-compose on both machines, its time to install docker swarm! On the Manager VM, run the command below. This will initialise docker swarm on our Manager VM. Make a note of the token code that is generated in the console as we will need this in order for our second VM to join the swarm as a worker node.
+```
+docker swarm init
+```
+SSH into the second VM (Worker) and type the docker swarm join command that was displayed in the Manager VM, youll have to replace "SOME_TOKEN_KEY" with the key that was generated for you.
+```
+docker swarm join --token SOME_TOKEN_KEY 10.0.0.5:2377
+```
+## Cloning the devops project into our enviornment
+From now on all work will be done in the Manager node. SSH into the Manager node and start by cloning down the devops github project into this VM.
 ```
 https://github.com/Marcofdoom/devopsproject.git
 ```
-
+### Create a local registry
 In order to run the devops project in swarm mode, firstly all images need to be created and pushed up to a local registry or dockerhub.
 
 To setup a local registry, enter this command.
 ```
 docker service create --name registry --publish published=5000,target=5000 registry:2
 ```
-
+### Building our images and pushing them to the local registry
 Navigate to the docker-compose.yaml file under the directory LAFB, and enter this command.
 ```
 docker-compose build
 ```
 This will then build all of the images within the docker-compose.yaml file. After this, you will need to navigate to the Dockerfile for the second version of the microservices and build them. From LAFB directory, using this command will navigate you to each of these Dockerfiles and then build the images.
-```
+
 cd numgen/8fig/
 docker build -t localhost:5000/numgen:8fig .
 
