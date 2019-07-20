@@ -71,6 +71,7 @@ docker-compose build
 ```
 This will then build all of the images within the docker-compose.yaml file. After this, you will need to navigate to the Dockerfile for the second version of the microservices and build them. From LAFB directory, using this command will navigate you to each of these Dockerfiles and then build the images.
 
+```
 cd numgen/8fig/
 docker build -t localhost:5000/numgen:8fig .
 
